@@ -1,0 +1,6 @@
+2026-04-04 22:13:58,972 - utils.loggers - [INFO] - Opening website
+2026-04-04 22:14:03,147 - utils.loggers - [INFO] - Clicking login link
+2026-04-04 22:14:04,141 - utils.loggers - [INFO] - Entering email
+2026-04-04 22:14:04,496 - utils.loggers - [INFO] - Entering password
+2026-04-04 22:14:04,740 - utils.loggers - [INFO] - Clicking login button
+2026-04-04 22:14:06,094 - utils.loggers - [INFO] - Login steps completed
