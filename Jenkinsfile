@@ -1,30 +1,25 @@
 pipeline {
     agent any
-
     environment {
-        PYTHON_PATH  = 'C:\Users\adima\AppData\Local\Microsoft\WindowsApps\python.exe'
+        PYTHON_PATH  = 'C:\\Users\\adima\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe'
         VENV_DIR     = '.venv'
         REPORTS_DIR  = 'reports'
         TEST_DIR     = 'tests'
-        HTML_REPORT  = 'reports\\test_report.html'
-        JUNIT_REPORT = 'reports\\junit_report.xml'
+        HTML_REPORT  = 'reports\\\\test_report.html'
+        JUNIT_REPORT = 'reports\\\\junit_report.xml'
     }
-
     options {
         timestamps()
         disableConcurrentBuilds()
         buildDiscarder(logRotator(numToKeepStr: '10'))
     }
-
     stages {
-
         stage('Checkout') {
             steps {
                 echo '>>> Checking out source code from SCM...'
                 checkout scm
             }
         }
-
         stage('Verify Python') {
             steps {
                 echo '>>> Checking Python installation...'
@@ -38,7 +33,6 @@ pipeline {
                 '''
             }
         }
-
         stage('Setup Python venv') {
             steps {
                 echo '>>> Creating virtual environment...'
@@ -51,7 +45,6 @@ pipeline {
                 '''
             }
         }
-
         stage('Install Dependencies') {
             steps {
                 echo '>>> Installing dependencies...'
@@ -64,7 +57,6 @@ pipeline {
                 '''
             }
         }
-
         stage('Run Tests') {
             steps {
                 echo '>>> Running pytest...'
@@ -81,7 +73,6 @@ pipeline {
                 '''
             }
         }
-
         stage('Publish Reports') {
             steps {
                 junit allowEmptyResults: true, testResults: 'reports/junit_report.xml'
@@ -96,7 +87,6 @@ pipeline {
             }
         }
     }
-
     post {
         always {
             echo '>>> Archiving reports...'
